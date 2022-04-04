@@ -16,7 +16,9 @@ import controller.trongngayException;
 import controller.trongsotienException;
 import controller.trongkhoanchiException;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,6 +42,12 @@ public class Formbangchi extends javax.swing.JPanel {
         tbbangchi.setModel(tm);
         them = false;
         sua = false;
+        ngay_thang.setEnabled(false);
+        tfsotien.setEnabled(false);
+        tfghichu.setEnabled(false);
+        tfkhoanchi.setEnabled(false);
+        Date date = new Date();
+        ngay_thang.getDateEditor().setDate(date);
         loadData();
     }
     private void loadData() {
@@ -82,17 +90,17 @@ public class Formbangchi extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        tfngay = new javax.swing.JTextField();
         tfsotien = new javax.swing.JTextField();
         tfghichu = new javax.swing.JTextField();
         tfkhoanchi = new javax.swing.JTextField();
-        bcapnhat = new javax.swing.JButton();
+        bluu = new javax.swing.JButton();
         bthem = new javax.swing.JButton();
         bxoa = new javax.swing.JButton();
         bsua = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbbangchi = new javax.swing.JTable();
         bboqua = new javax.swing.JButton();
+        ngay_thang = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setText("Ngay");
 
@@ -168,60 +176,100 @@ public class Formbangchi extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        setBackground(new java.awt.Color(255, 255, 102));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 255));
         jLabel5.setText("Ngày");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 17, -1, 28));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 255));
         jLabel6.setText("Số tiền");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 22, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 255));
         jLabel7.setText("Ghi chú");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 255));
         jLabel8.setText("Khoản chi");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, -1, -1));
 
-        tfngay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfngayActionPerformed(evt);
-            }
-        });
-
+        tfsotien.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tfsotien.setForeground(new java.awt.Color(0, 51, 255));
+        tfsotien.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tfsotien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfsotienActionPerformed(evt);
             }
         });
+        add(tfsotien, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 57, 120, 30));
 
+        tfghichu.setForeground(new java.awt.Color(0, 51, 255));
+        tfghichu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add(tfghichu, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 57, 150, 30));
+
+        tfkhoanchi.setForeground(new java.awt.Color(0, 51, 255));
+        tfkhoanchi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tfkhoanchi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfkhoanchiActionPerformed(evt);
             }
         });
+        add(tfkhoanchi, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 57, 170, 30));
 
-        bcapnhat.setText("Cập nhật");
-        bcapnhat.addActionListener(new java.awt.event.ActionListener() {
+        bluu.setBackground(new java.awt.Color(255, 204, 204));
+        bluu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bluu.setForeground(new java.awt.Color(153, 0, 153));
+        bluu.setText("Lưu");
+        bluu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bcapnhatActionPerformed(evt);
+                bluuActionPerformed(evt);
             }
         });
+        add(bluu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
+        bthem.setBackground(new java.awt.Color(255, 204, 204));
+        bthem.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bthem.setForeground(new java.awt.Color(153, 0, 153));
         bthem.setText("Thêm");
         bthem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bthemActionPerformed(evt);
             }
         });
+        add(bthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
+        bxoa.setBackground(new java.awt.Color(255, 204, 204));
+        bxoa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bxoa.setForeground(new java.awt.Color(153, 0, 153));
         bxoa.setText("Xóa");
         bxoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bxoaActionPerformed(evt);
             }
         });
+        add(bxoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
+        bsua.setBackground(new java.awt.Color(255, 204, 204));
+        bsua.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bsua.setForeground(new java.awt.Color(153, 0, 153));
         bsua.setText("Sửa");
         bsua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bsuaActionPerformed(evt);
             }
         });
+        add(bsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
 
+        tbbangchi.setBackground(new java.awt.Color(153, 255, 153));
+        tbbangchi.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tbbangchi.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tbbangchi.setForeground(new java.awt.Color(102, 102, 0));
         tbbangchi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -241,84 +289,25 @@ public class Formbangchi extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbbangchi);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 601, 290));
+
+        bboqua.setBackground(new java.awt.Color(255, 204, 204));
+        bboqua.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bboqua.setForeground(new java.awt.Color(153, 0, 153));
         bboqua.setText("Bỏ qua");
         bboqua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bboquaActionPerformed(evt);
             }
         });
+        add(bboqua, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel5)
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel6)
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel7)
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfngay, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bthem))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(tfsotien, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(bsua)
-                                        .addGap(33, 33, 33)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfghichu, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(bcapnhat)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tfkhoanchi, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(bxoa)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(bboqua)))))))
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfsotien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfghichu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfkhoanchi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bthem)
-                    .addComponent(bsua)
-                    .addComponent(bcapnhat)
-                    .addComponent(bxoa)
-                    .addComponent(bboqua))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        ngay_thang.setBackground(new java.awt.Color(51, 255, 204));
+        ngay_thang.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ngay_thang.setForeground(new java.awt.Color(0, 255, 204));
+        ngay_thang.setDateFormatString("dd-MM-yyyy");
+        ngay_thang.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        add(ngay_thang, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 57, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -337,37 +326,40 @@ public class Formbangchi extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfkhoanchiActionPerformed
 
-    private void tfngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfngayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfngayActionPerformed
-
     private void tfsotienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfsotienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfsotienActionPerformed
 
     private void bthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthemActionPerformed
+        ngay_thang.setEnabled(true);
+        tfsotien.setEnabled(true);
+        tfsotien.setText("");
+        tfghichu.setEnabled(true);
+        tfghichu.setText("");
+        tfkhoanchi.setEnabled(true);
+        tfkhoanchi.setText("");
         trangthai(false);
         them = true;
         if(lbangchi == null || lbangchi.size() < 1)
             lbangchi = new ArrayList<>();
-        tfngay.requestFocus();
     }//GEN-LAST:event_bthemActionPerformed
 
     private void tbbangchiAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tbbangchiAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_tbbangchiAncestorAdded
 
-    private void bcapnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcapnhatActionPerformed
+    private void bluuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bluuActionPerformed
         // TODO add your handling code here:
         if(them){
             String ngay, sotien, ghichu, khoanchi;
             try{
-                ngay = tfngay.getText();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                ngay = sdf.format(ngay_thang.getDate());
                 sotien = tfsotien.getText();
                 ghichu = tfghichu.getText();
                 khoanchi = tfkhoanchi.getText();
                 if(ngay.isEmpty()) throw new trongngayException();
-                if (!ngay.matches("^\\d{2}[/]\\d{2}[/]\\d{4}$")) throw new NgayException();
+                if (!ngay.matches("^\\d{2}[-]\\d{2}[-]\\d{4}$")) throw new NgayException();
                 if(sotien.isEmpty()) throw new trongsotienException();
                 if(!sotien.matches("\\d+")) throw new numberException();
                 if(ghichu.isEmpty()) throw new trongghichuException();
@@ -379,12 +371,16 @@ public class Formbangchi extends javax.swing.JPanel {
                 lbangchi.add(bc);
                 trangthai(true);
                 them = false;
+                ngay_thang.setEnabled(false);
+                tfsotien.setEnabled(false);
+                tfghichu.setEnabled(false);
+                tfkhoanchi.setEnabled(false);
             }
             catch(trongngayException e){
                 JOptionPane.showMessageDialog(this,"Khong de trong ngay!");
             }
             catch (NgayException e) {
-                JOptionPane.showMessageDialog(this,"Nhap dung dinh dang dd/mm/yy");
+                JOptionPane.showMessageDialog(this,"Nhap dung dinh dang dd-mm-yyyy");
             }
             catch (trongsotienException e) {
                 JOptionPane.showMessageDialog(this,"Khong de trong so tien!");
@@ -403,7 +399,8 @@ public class Formbangchi extends javax.swing.JPanel {
             int row = tbbangchi.getSelectedRow();
             String ngay, sotien, ghichu, khoanchi;
             try{
-                ngay = tfngay.getText();
+               SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                ngay = sdf.format(ngay_thang.getDate());
                 sotien = tfsotien.getText();
                 ghichu = tfghichu.getText();
                 khoanchi = tfkhoanchi.getText();
@@ -420,6 +417,11 @@ public class Formbangchi extends javax.swing.JPanel {
                 lbangchi.set(row, bc);
                 trangthai(true);
                 sua = false;
+                ngay_thang.setEnabled(false);
+                tfsotien.setEnabled(false);
+                tfghichu.setEnabled(false);
+                tfkhoanchi.setEnabled(false);
+                tbbangchi.setEnabled(true);
             }
             catch(trongngayException e){
                 JOptionPane.showMessageDialog(this,"Khong de trong ngay!");
@@ -435,10 +437,7 @@ public class Formbangchi extends javax.swing.JPanel {
             }
         }
         IOFile.viet(fbangchi, lbangchi);
-        for(Bangchi i: lbangchi){
-            System.out.println(i.getSotien()); 
-        }
-    }//GEN-LAST:event_bcapnhatActionPerformed
+    }//GEN-LAST:event_bluuActionPerformed
 
     private void bboquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bboquaActionPerformed
         if (them) {
@@ -446,8 +445,12 @@ public class Formbangchi extends javax.swing.JPanel {
         }
         if (sua) 
             sua = false;
-        
+        ngay_thang.setEnabled(false);
+        tfsotien.setEnabled(false);
+        tfghichu.setEnabled(false);
+        tfkhoanchi.setEnabled(false);
         trangthai(true);
+        tbbangchi.setEnabled(true);
     }//GEN-LAST:event_bboquaActionPerformed
 
     private void bsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsuaActionPerformed
@@ -457,9 +460,25 @@ public class Formbangchi extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Chon ngay can sua");
         }
         else {
+            SimpleDateFormat fdate  = new SimpleDateFormat("dd-MM-yyyy");
+            String datee = tm.getValueAt(row, 0).toString();
+            Date date ;
+            try {
+                date = fdate.parse(datee);
+                ngay_thang.getDateEditor().setDate(date);
+            } catch (Exception e) {
+                
+            }
+            tfsotien.setText(tm.getValueAt(row, 1).toString());
+            tfghichu.setText(tm.getValueAt(row, 2).toString());
+            tfkhoanchi.setText(tm.getValueAt(row, 3).toString());
+            ngay_thang.setEnabled(true);
+            tfsotien.setEnabled(true);
+            tfghichu.setEnabled(true);
+            tfkhoanchi.setEnabled(true);
             sua = true;
             trangthai(false);
-            tfngay.requestFocus();
+            tbbangchi.setEnabled(false);
         }
     }//GEN-LAST:event_bsuaActionPerformed
 
@@ -472,12 +491,17 @@ public class Formbangchi extends javax.swing.JPanel {
             tm.removeRow(row);
             lbangchi.remove(row);
         }
+        ngay_thang.setEnabled(false);
+        tfsotien.setEnabled(false);
+        tfghichu.setEnabled(false);
+        tfkhoanchi.setEnabled(false);
+        IOFile.viet(fbangchi, lbangchi);
     }//GEN-LAST:event_bxoaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bboqua;
-    private javax.swing.JButton bcapnhat;
+    private javax.swing.JButton bluu;
     private javax.swing.JButton bsua;
     private javax.swing.JButton bthem;
     private javax.swing.JButton bxoa;
@@ -495,10 +519,10 @@ public class Formbangchi extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private com.toedter.calendar.JDateChooser ngay_thang;
     private javax.swing.JTable tbbangchi;
     private javax.swing.JTextField tfghichu;
     private javax.swing.JTextField tfkhoanchi;
-    private javax.swing.JTextField tfngay;
     private javax.swing.JTextField tfsotien;
     // End of variables declaration//GEN-END:variables
 

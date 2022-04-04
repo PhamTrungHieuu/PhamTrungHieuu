@@ -27,8 +27,10 @@ public final class Main extends javax.swing.JFrame {
     private List<Bangthu> lbangthu;
     private String fbangthu;
     
+    
     private List<Bangchi> lbangchi;
     private String fbangchi;
+    private int tongchi = 0, tongthu = 0;
     private void loadData1() {
         File f = new File(fbangchi);
         if (f.exists()) {
@@ -43,10 +45,10 @@ public final class Main extends javax.swing.JFrame {
         if(lbangchi == null || lbangchi.size() < 1)
             lbangchi = new ArrayList<>();
         loadData1();
-        int tong = 0;
+        tongchi = 0;
         for(Bangchi i: lbangchi)
-            tong += i.getSotien();
-        jtongchi.setText(Integer.toString(tong));
+            tongchi += i.getSotien();
+        jtongchi.setText(Integer.toString(tongchi));
     }
     private void loadData() {
         File f = new File(fbangthu);
@@ -62,28 +64,27 @@ public final class Main extends javax.swing.JFrame {
         if(lbangthu == null || lbangthu.size() < 1)
             lbangthu = new ArrayList<>();
         loadData();
-        int tong = 0;
+        tongthu = 0;
         for(Bangthu i: lbangthu)
-            tong += i.getSotien();
-        jtongthu.setBackground(Color.GREEN);
-        jtongthu.setFont(new Font("Serif", Font.BOLD, 20));
-        jtongthu.setForeground(Color.RED);
-        jtongthu.setText(Integer.toString(tong));
+            tongthu += i.getSotien();
+        jtongthu.setText(Integer.toString(tongthu));
     }
     public Main() {
         initComponents();
+        setLocationRelativeTo(null);
         tongthu();
         tongchi();
-//        setSize(1000, 700);
+        ldu.setText(Integer.toString(tongthu - tongchi));
         Formbangthu fFormbangthu;
         fFormbangthu = new Formbangthu();
-        fFormbangthu.setBackground(Color.GREEN);
-        fFormbangthu.setFont(new Font("Serif", Font.BOLD, 20));
-        fFormbangthu.setForeground(Color.RED);
         tab.addTab("Bang thu", fFormbangthu);
         Formbangchi fFormbangchi;
         fFormbangchi = new Formbangchi();
         tab.add("Bang chi", fFormbangchi);
+        Thongke fthongke;
+        fthongke = new Thongke();
+        tab.add("Thong ke", fthongke);
+        jcapnhat.setSelected(true);
         
     }
 
@@ -96,16 +97,51 @@ public final class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
         tab = new javax.swing.JTabbedPane();
         jLabel1 = new javax.swing.JLabel();
-        jtongthu = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jtongthu = new javax.swing.JLabel();
         jtongchi = new javax.swing.JLabel();
+        jcapnhat = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        ldu = new javax.swing.JLabel();
+        anhnen = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        setForeground(new java.awt.Color(51, 255, 153));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tab.setForeground(new java.awt.Color(0, 255, 102));
+        tab.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 660, 470));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 0));
         jLabel1.setText("Tổng số tiền thu :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 170, 40));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel2.setText("Tổng số tiền chi :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 160, 34));
+
+        jtongthu.setBackground(new java.awt.Color(153, 255, 0));
+        jtongthu.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jtongthu.setForeground(new java.awt.Color(51, 0, 255));
         jtongthu.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jtongthuAncestorAdded(evt);
@@ -115,42 +151,35 @@ public final class Main extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        getContentPane().add(jtongthu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 260, 180, 40));
 
-        jLabel2.setText("Tổng số tiền chi :");
+        jtongchi.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jtongchi.setForeground(new java.awt.Color(0, 0, 255));
+        getContentPane().add(jtongchi, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 190, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtongthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtongchi, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 49, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtongthu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtongchi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jcapnhat.setBackground(new java.awt.Color(204, 204, 255));
+        jcapnhat.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        jcapnhat.setForeground(new java.awt.Color(0, 0, 255));
+        jcapnhat.setText("Cập nhật");
+        jcapnhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcapnhatActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jcapnhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 150, 120, 31));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel3.setText("Số dư tài chính :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(707, 452, 150, 30));
+
+        ldu.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        ldu.setForeground(new java.awt.Color(204, 0, 255));
+        ldu.setText(" ");
+        getContentPane().add(ldu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 500, 170, 40));
+
+        anhnen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/controller/Anhnen.png"))); // NOI18N
+        getContentPane().add(anhnen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,6 +187,13 @@ public final class Main extends javax.swing.JFrame {
     private void jtongthuAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jtongthuAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jtongthuAncestorAdded
+
+    private void jcapnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcapnhatActionPerformed
+        // TODO add your handling code here:
+        tongthu();
+        tongchi();
+        ldu.setText(Integer.toString(tongthu - tongchi));
+    }//GEN-LAST:event_jcapnhatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,10 +231,15 @@ public final class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel anhnen;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jcapnhat;
     private javax.swing.JLabel jtongchi;
     private javax.swing.JLabel jtongthu;
+    private javax.swing.JLabel ldu;
     private javax.swing.JTabbedPane tab;
     // End of variables declaration//GEN-END:variables
 }

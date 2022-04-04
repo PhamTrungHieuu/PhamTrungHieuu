@@ -4,19 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Java/Quan_li_chi_tieu/src/view/Main.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/NgayException.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/Bangchi.DAT</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/trongsotienException.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/TrongException.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/view/Formbangchi.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/trongngayException.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/trongghichuException.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/numberException.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/IOFile.java</file>
+            <file>file:/D:/Java/Quan_li_chi_tieu/src/view/Thongke.java</file>
             <file>file:/D:/Java/Quan_li_chi_tieu/src/view/Formbangthu.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/Bangthu.DAT</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/controller/trongkhoanchiException.java</file>
-            <file>file:/D:/Java/Quan_li_chi_tieu/src/model/Bangchi.java</file>
+            <file>file:/D:/Java/Quan_li_chi_tieu/src/view/Formbangchi.java</file>
         </group>
     </open-files>
 </project-private>
