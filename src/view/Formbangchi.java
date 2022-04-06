@@ -15,6 +15,7 @@ import controller.numberException;
 import controller.trongngayException;
 import controller.trongsotienException;
 import controller.trongkhoanchiException;
+import java.awt.Color;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -202,6 +203,11 @@ public class Formbangchi extends javax.swing.JPanel {
         tfsotien.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tfsotien.setForeground(new java.awt.Color(0, 51, 255));
         tfsotien.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tfsotien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfsotienMouseClicked(evt);
+            }
+        });
         tfsotien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfsotienActionPerformed(evt);
@@ -383,15 +389,20 @@ public class Formbangchi extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this,"Nhap dung dinh dang dd-mm-yyyy");
             }
             catch (trongsotienException e) {
+                tfsotien.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong so tien!");
             } 
             catch (numberException e) {
+                tfsotien.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Nhap so nguyen duong!");
+                tfsotien.setText("");
             }
             catch(trongghichuException e){
+                tfghichu.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong ghi chu!");
             }
             catch (trongkhoanchiException e) {
+                tfkhoanchi.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong khoan chi!");
             }
         }
@@ -406,6 +417,7 @@ public class Formbangchi extends javax.swing.JPanel {
                 khoanchi = tfkhoanchi.getText();
                 if(ngay.isEmpty()) throw new trongngayException();
                 if(sotien.isEmpty()) throw new trongsotienException();
+                if(!sotien.matches("\\d+")) throw new numberException();
                 if(ghichu.isEmpty()) throw new trongghichuException();
                 if(khoanchi.isEmpty()) throw new trongkhoanchiException();
                 int tien = Integer.parseInt(sotien);
@@ -428,11 +440,18 @@ public class Formbangchi extends javax.swing.JPanel {
             }
             catch (trongsotienException e) {
                 JOptionPane.showMessageDialog(this,"Khong de trong so tien!");
-            } 
+            }
+            catch (numberException e) {
+                tfsotien.setBackground(Color.red);
+                JOptionPane.showMessageDialog(this,"Nhap so nguyen duong!");
+            }
             catch(trongghichuException e){
+                tfsotien.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong ghi chu!");
+                tfsotien.setText("");
             }
             catch (trongkhoanchiException e) {
+                tfkhoanchi.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong khoan chi!");
             }
         }
@@ -451,6 +470,9 @@ public class Formbangchi extends javax.swing.JPanel {
         tfkhoanchi.setEnabled(false);
         trangthai(true);
         tbbangchi.setEnabled(true);
+        tfsotien.setBackground(Color.white);
+        tfghichu.setBackground(Color.white);
+        tfkhoanchi.setBackground(Color.white);
     }//GEN-LAST:event_bboquaActionPerformed
 
     private void bsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsuaActionPerformed
@@ -497,6 +519,11 @@ public class Formbangchi extends javax.swing.JPanel {
         tfkhoanchi.setEnabled(false);
         IOFile.viet(fbangchi, lbangchi);
     }//GEN-LAST:event_bxoaActionPerformed
+
+    private void tfsotienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfsotienMouseClicked
+        // TODO add your handling code here:
+        tfsotien.setBackground(Color.white);
+    }//GEN-LAST:event_tfsotienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

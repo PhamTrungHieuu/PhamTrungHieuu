@@ -7,6 +7,7 @@ package view;
 import controller.IOFile;
 import controller.NgayException;
 import controller.trongngayException;
+import java.awt.Color;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -191,6 +192,11 @@ public class Thongke extends javax.swing.JPanel {
 
         tfnam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         tfnam.setForeground(new java.awt.Color(0, 0, 255));
+        tfnam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfnamMouseClicked(evt);
+            }
+        });
         add(tfnam, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 74, 30));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -325,10 +331,13 @@ public class Thongke extends javax.swing.JPanel {
                     }
                 }
                 catch (trongngayException ex) {
+                     tfnam.setBackground(Color.red);
                     JOptionPane.showMessageDialog(this,"Khong de trong ngay!");
                 }
                 catch (NgayException ex) {
+                    tfnam.setBackground(Color.red);
                     JOptionPane.showMessageDialog(this,"Nhap dung dinh dang yyyy!");
+                    tfnam.setText("");
                 }
                 
             }
@@ -388,10 +397,13 @@ public class Thongke extends javax.swing.JPanel {
                         }
                     }
                     catch (trongngayException ex) {
+                         tfnam.setBackground(Color.red);
                         JOptionPane.showMessageDialog(this,"Khong de trong ngay!");
                     }
                     catch (NgayException ex) {
+                        tfnam.setBackground(Color.red);
                         JOptionPane.showMessageDialog(this,"Nhap dung dinh dang yyyy!");
+                        tfnam.setText("");
                     }
                 }
                 
@@ -429,6 +441,11 @@ public class Thongke extends javax.swing.JPanel {
         tfnam.setEnabled(true);
         ngay_thang.setEnabled(false);
     }//GEN-LAST:event_jnamActionPerformed
+
+    private void tfnamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfnamMouseClicked
+        // TODO add your handling code here:
+        tfnam.setBackground(Color.white);
+    }//GEN-LAST:event_tfnamMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -15,6 +15,7 @@ import controller.trongghichuException;
 import controller.trongkhoanchiException;
 import controller.trongngayException;
 import controller.trongsotienException;
+import java.awt.Color;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -100,6 +101,11 @@ public class Formbangthu extends javax.swing.JPanel {
 
         tfsotien.setForeground(new java.awt.Color(0, 51, 255));
         tfsotien.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tfsotien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfsotienMouseClicked(evt);
+            }
+        });
         tfsotien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfsotienActionPerformed(evt);
@@ -124,6 +130,11 @@ public class Formbangthu extends javax.swing.JPanel {
 
         tfghichu.setForeground(new java.awt.Color(0, 51, 255));
         tfghichu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tfghichu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfghichuMouseClicked(evt);
+            }
+        });
         tfghichu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfghichuActionPerformed(evt);
@@ -133,6 +144,11 @@ public class Formbangthu extends javax.swing.JPanel {
 
         tfkhoanthu.setForeground(new java.awt.Color(0, 51, 255));
         tfkhoanthu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tfkhoanthu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfkhoanthuMouseClicked(evt);
+            }
+        });
         add(tfkhoanthu, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 50, 180, 30));
 
         bthem.setBackground(new java.awt.Color(255, 204, 204));
@@ -321,15 +337,20 @@ public class Formbangthu extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this,"Nhap dung dinh dang dd-mm-yyyy");
             }
             catch (trongsotienException e) {
+                tfsotien.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong so tien!");
             } 
             catch (numberException e) {
+                tfsotien.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Nhap so nguyen duong!");
+                tfsotien.setText("");
             }
             catch(trongghichuException e){
+                tfghichu.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong ghi chu!");
             }
             catch (trongkhoanchiException e) {
+                tfkhoanthu.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong khoan chi!");
             }
         }
@@ -345,6 +366,7 @@ public class Formbangthu extends javax.swing.JPanel {
                 if(ngay.isEmpty()) throw new trongngayException();
                 if (!ngay.matches("^\\d{2}[-]\\d{2}[-]\\d{4}$")) throw new NgayException();
                 if(sotien.isEmpty()) throw new trongsotienException();
+                if(!sotien.matches("\\d+")) throw new numberException();
                 if(ghichu.isEmpty()) throw new trongghichuException();
                 if(khoanthu.isEmpty()) throw new trongkhoanchiException();
                 int tien = Integer.parseInt(sotien);
@@ -369,12 +391,20 @@ public class Formbangthu extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this,"Nhap dung dinh dang dd-mm-yyyy");
             }
             catch (trongsotienException e) {
+                tfsotien.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong so tien!");
             } 
+            catch (numberException e) {
+                tfsotien.setBackground(Color.red);
+                JOptionPane.showMessageDialog(this,"Nhap so nguyen duong!");
+                tfsotien.setText("");
+            }
             catch(trongghichuException e){
+                tfghichu.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong ghi chu!");
             }
             catch (trongkhoanchiException e) {
+                tfkhoanthu.setBackground(Color.red);
                 JOptionPane.showMessageDialog(this,"Khong de trong khoan chi!");
             }
         }
@@ -424,11 +454,29 @@ public class Formbangthu extends javax.swing.JPanel {
         tfghichu.setEnabled(false);
         tfkhoanthu.setEnabled(false);
         tbbangthu.setEnabled(true);
+        tfsotien.setBackground(Color.white);
+        tfghichu.setBackground(Color.white);
+        tfkhoanthu.setBackground(Color.white);
     }//GEN-LAST:event_bboquaActionPerformed
 
     private void ngay_thangAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ngay_thangAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_ngay_thangAncestorAdded
+
+    private void tfsotienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfsotienMouseClicked
+        // TODO add your handling code here:
+        tfsotien.setBackground(Color.white);
+    }//GEN-LAST:event_tfsotienMouseClicked
+
+    private void tfghichuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfghichuMouseClicked
+        // TODO add your handling code here:
+        tfghichu.setBackground(Color.white);
+    }//GEN-LAST:event_tfghichuMouseClicked
+
+    private void tfkhoanthuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfkhoanthuMouseClicked
+        // TODO add your handling code here:
+        tfkhoanthu.setBackground(Color.white);
+    }//GEN-LAST:event_tfkhoanthuMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
